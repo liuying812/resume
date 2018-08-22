@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ying L</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+
+
+
+	<style type="text/css">
+		.loading{
+		  width:200px;
+		  height:200px;
+		  position:relative;  
+		}
+		.loading::before, .loading::after{
+		  content: '';
+		  width:0px;
+		  height:0px;
+		  background: #000;
+		  border-radius:50%;
+		  top:0;
+		  bottom:0;
+		  left:0;
+		  right:0;
+		  margin:auto;
+		  position:absolute;
+		  animation: s 1.5s linear infinite;
+		}
+
+		.loading::after{
+			animation-delay:0.75s; /* 让第二个圈延迟 */
+		}
+
+		@keyframes s{
+		  0%{
+		    width: 0px;height:0px; opacity:1;
+		  }
+		  100%{
+		    width:100px;height:100px; opacity:0;
+		  }
+		}
+		.loadingWrapper{
+			display: none;
+			position: fixed;
+			top:0;left: 0;bottom: 0;right: 0;
+			background: #ccc;
+			justify-content:center;
+			align-items:center;
+			z-index: 10;
+		}
+		.loadingWrapper.active{
+			display: flex;
+		}
+	    .icon {
+	       width: 1em; height: 1em;
+	       vertical-align: -0.15em;
+	       fill: currentColor;
+	       overflow: hidden;
+	    }
+	</style>
+</head>
+<body>
+	<div class="loadingWrapper active" id="loadingWrapper">
+		<div class="loading"></div>
+	</div>
+	<div id ="topNavBar" class="topNavBar">
+		<div class="topNavBar-inner clearfix">
+			<a href="#" class="logo" alt="logo" style="float:left">
+				<span class="rs">RS</span><span class="card">card</span>
+			</a>
+			<nav>
+				<ul class="clearfix">
+					<li><a href="#siteAbout">关于</a></li>
+					<li>
+						<a href="#siteSkill">技能</a>
+						<ul class="submenu">
+							<li>技能一</li>
+							<li>技能二</li>
+							<li>技能三</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#sitePro">作品</a>
+						<ul class="submenu">
+							<li>作品一</li>
+							<li>作品二</li>
+							<li>作品三</li>
+						</ul>
+					</li>
+					<li>  
+						<a href="#siteBlog">博客</a>
+						<ul class="submenu">
+							<li>博客一</li>
+							<li>博客二</li>
+							<li>博客三</li>
+						</ul>
+					</li>
+					<li><a href="#siteCal">日历</a></li>
+					<li><a href="#siteIph">联系方式</a></li>
+					<li><a href="#siteOth">其他</a></li>
+				</ul>	
+			</nav>			
+		</div>		
+	</div>
+
+	<div class="banner">
+		<div class="mask"></div>
+	</div>
+
+	<main>
+		<div data-x class="userCard" id="siteAbout">
+			<div class="pictureAndText clearfix">
+				<div class="picture">
+					<img src="./img/startuper.jpg" style="width:295px;height:343px;" alt="头像">
+				</div>
+				<div class="text">
+					<span class="welcome wow bounceInUp" data-wow-delay=".6s">HELLO
+						<span class="triangle"></span>
+					</span>
+					<h1 class="wow fadeInUp" data-wow-delay=".5s">刘 颖</h1>
+					<span class="wow fadeInUp" data-wow-delay=".5s">前 端 开 发 工 程 师</span>
+					<hr><!-- 水平分割线 -->
+					<dl><!-- 描述列表 -->
+						<dt>年 龄</dt>
+						<dd>25</dd>
+						<dt>邮 箱</dt>
+						<dd>liuyinghpu@163.com</dd>
+						<dt>手 机</dt>
+						<dd>13052276515</dd>
+					</dl>
+				
+					
+				</div>
+			</div>
+
+			<footer class="media">
+				<!-- a[href="#"]*7>img[src=#][alt="..."] -->
+				<a href="#">
+					<svg class="icon" aria-hidden="true">
+	    				<use xlink:href="#icon-github">
+	 					</use>
+					</svg>
+				</a>
+				<a href="#">
+					<svg class="icon" aria-hidden="true">
+	    				<use xlink:href="#icon-weibo">
+	 					</use>
+					</svg>
+				</a>
+				<a href="#">
+					<svg class="icon" aria-hidden="true">
+	    				<use xlink:href="#icon-qq-copy">
+	 					</use>
+					</svg>
+				</a>					
+			</footer>				
+		</div>	
+
+		<!-- 若点击跳出一个对话框，则是button标签；若是跳转链接则用a -->
+		<p class="downloadcv-wrapper">
+			<a class="downloadcv wow fadeInUp" data-wow-delay=".3s" href="./aaa.pdf" target="_blank" download>下载PDF简历</a>
+		</p>
+
+		<!-- <br> 强制换行 -->
+		<p class="selfInfo wow fadeInUp" data-wow-delay=".3s">
+			刘颖，前端工程师<br>
+			技能：前端开发，Node.js开发，Vue开发
+		</p>
+	</main>
+
+	<!-- 章节 -->
+	<!-- &amp;表示& 转义 -->
+	<section data-x class="skills" id="siteSkill">
+		<h2 class="wow fadeInUp" data-wow-delay=".3s">技能</h2>
+		<ul class="clearfix">
+			<li>
+				<h3 class="wow fadeInUp" data-wow-delay=".3s">HTML 5 &amp; CSS3</h3>
+				<div class="progressBar">
+					<div class="progress"></div>
+				</div>
+			</li>
+			<li>
+				<h3 class="wow fadeInUp" data-wow-delay=".3s">JavaScript</h3>
+				<div class="progressBar">
+					<div class="progress"></div>
+				</div>
+			</li>
+			<li>
+				<h3 class="wow fadeInUp" data-wow-delay=".3s">JQuery</h3>
+				<div class="progressBar">
+					<div class="progress"></div>
+				</div>
+			</li>
+			<li>
+				<h3 class="wow fadeInUp" data-wow-delay=".3s">Vue</h3>
+				<div class="progressBar">
+					<div class="progress"></div>
+				</div>
+			</li>
+			<li>
+				<h3 class="wow fadeInUp" data-wow-delay=".3s">React</h3>
+				<div class="progressBar">
+					<div class="progress"></div>
+				</div>
+			</li>
+			<li>
+				<h3 class="wow fadeInUp" data-wow-delay=".3s">HTTP</h3>
+				<div class="progressBar">
+					<div class="progress"></div>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+	<section data-x class="portfolio" id="sitePro">
+		<h2 class="wow fadeInUp" data-wow-delay=".3s">作品集</h2>
+		<nav>
+			<ol class="clearfix">
+				<li id="portfolio1">所有</li>
+				<li id="portfolio2">框架</li>
+				<li id="portfolio3">原生JS &amp; CSS</li>
+			</ol>
+			<div id="portfolioBar" class="bar state-1">
+				<div class="bar-inner"></div>
+			</div>
+		</nav>
+
+	<div class="works" style="height:597px;">
+		<!-- <div class="big" style="top:0;left:0"><img src="./img/1.jpg" alt=""></div>
+		<div class="small" style="top:0;left:645px;"><img src="./img/2.jpg" alt=""></div>
+		<div class="small" style="top:298px;left:645px"><img src="./img/3.jpg" alt=""></div> -->
+	</div>
+
+	</section>
+
+	<script src="//at.alicdn.com/t/font_790497_if5udszwra.js"></script>
+	<script src="js/Tween.min.js"></script>
+	<script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+
+	 <script>
+	 	/*故意给个时间延迟才消除loading*/
+		setTimeout(function(){
+			loadingWrapper.classList.remove('active')
+		},500)
+      	new WOW().init();
+     </script>
+
+	<script>
+		portfolio1.onclick = function(){
+			portfolioBar.className = 'bar state-1'
+		}
+		portfolio2.onclick = function(){
+			portfolioBar.className = 'bar state-2'
+		}
+		portfolio3.onclick = function(){
+			portfolioBar.className = 'bar state-3'
+		}
+	</script>
+
+	<script>
+
+		/*知道用户滚动页面*/
+		window.onscroll = function(){
+			if(window.scrollY > 0){//滚动高度
+				topNavBar.classList.add('sticky')
+			}else{
+				topNavBar.classList.remove('sticky')
+			}
+		}
+
+
+		let liTags = document.querySelectorAll('.topNavBar nav > ul > li')
+		for(let i=0; i<liTags.length; i++){
+			liTags[i].onmouseenter = function(x){	
+				x.currentTarget.classList.add('active')										
+			}
+			liTags[i].onmouseleave = function(x){
+				x.currentTarget.classList.remove('active')							
+			}
+		}
+
+
+		let aTags = document.querySelectorAll('.topNavBar nav > ul > li > a')
+		for(let i=0; i < aTags.length; i++){
+			aTags[i].onclick = function(x){
+				x.preventDefault()
+				let a = x.currentTarget
+				let href = a.getAttribute('href')
+				let targetEle = document.querySelector(href)
+				let top = targetEle.offsetTop
+				
+				//window.scrollTo(0, top - 60)
+
+				let currentTop = window.scrollY
+				let targetTop = top - 60
+				let s = targetTop -currentTop
+				var coords = {y: currentTop}
+				let t = Math.abs((s/100)*300)
+				if(t>500){ t = 500}
+
+				var tween = new TWEEN.Tween(coords) // 起始位置
+				      .to({ y: targetTop}, t) // 结束位置 和 时间
+				      .easing(TWEEN.Easing.Cubic.InOut) // 缓动类型
+				      .onUpdate(function() {
+				        // coords.y 已经变了
+				        window.scrollTo(0,coords.y) // 如何更新界面
+				      })
+				      .start(); // 开始缓动
+			}
+		}
+
+		function animate(time) {
+		  requestAnimationFrame(animate);
+		  TWEEN.update(time);
+		}
+		requestAnimationFrame(animate);
+
+
+		/*高亮当前模块菜单*/
+		window.onscroll = function(){
+			let sTags = document.querySelectorAll('[data-x]')
+			let minIndex = 0
+			for(let i = 1; i < sTags.length; i++){
+				if(Math.abs(sTags[i].offsetTop - window.scrollY) < Math.abs(sTags[minIndex].offsetTop - window.scrollY)){
+					minIndex = i
+				}
+			}
+
+			if(minIndex==1){
+				let bars = document.querySelectorAll('.progressBar .progress')
+				for(let i=0; i< bars.length; i++){
+					bars[i].style.animation = 'barSlide .6s'
+					bars[i].style.width = '75%'
+				}
+			}
+
+			let tagId = sTags[minIndex].id
+			let a = document.querySelector('a[href="#'+tagId+'"]')
+			let li = a.parentNode
+			let allTag = li.parentNode.children
+			for(let i=0; i< allTag.length; i++){
+				allTag[i].classList.remove('highlight')
+			}
+			li.classList.add('highlight')
+		}
+
+		/*menu子菜单制作，js找弟弟,这时监听对象是a，但是鼠标去点子菜单的时候就执行了onmouseleave,所以需要监听外层li*/
+		/*let aTags = document.getElementsByClassName('menuTrigger')
+		for(let i=0; i<aTags.length; i++){
+			aTags[i].onmouseenter = function(x){
+				
+				let a = x.currentTarget
+				let brother = a.nextSibling
+				while(brother.tagName !== 'UL'){
+					brother = brother.nextSibling
+				}
+				brother.classList.add('active')
+				
+			}
+			aTags[i].onmouseleave = function(x){
+				let a = x.currentTarget
+				let brother = a.nextSibling
+				while(brother.tagName !== 'UL'){
+					brother = brother.nextSibling
+				}
+				brother.classList.remove('active')			}
+		}*/
+	</script>
+</body>
+</html>
