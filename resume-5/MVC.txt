@@ -1,0 +1,5 @@
+MVC 是一种编程思想，代码组织形式。view(视图) model(数据) controller(逻辑)
+用户点击view，controller监听view，所以一旦view被点击controller就会得到通知，
+controller从view中会获取到一些数据，然后调用model,model就会去服务器请求，
+server给到model响应数据，model再把数据返回给controller,
+controller拿到数据后就会去更新view。

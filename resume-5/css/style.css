@@ -1,0 +1,469 @@
+*{margin: 0;padding: 0;}
+body{margin: 0;background-color: #efefef;}
+a{color: inherit; /* 继承父元素颜色 */text-decoration: none;}
+hr{height: 0;border: none;border-top: 1px solid #dedede;}
+ul,ol{list-style: none;}
+
+/************************清除浮动**********************/
+.clearfix::after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/**********************刚进页面的loading加载动画************************/
+.loading{
+  width:200px;
+  height:200px;
+  position:relative;  
+}
+.loading::before, .loading::after{
+  content: '';
+  width:0px;
+  height:0px;
+  background: #000;
+  border-radius:50%;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+  position:absolute;
+  animation: s 1s linear infinite;
+}
+
+.loading::after{
+	animation-delay:0.3s; /* 让第二个圈延迟 */
+}
+
+@keyframes s{
+  0%{
+    width: 0px;height:0px; opacity:1;
+  }
+  100%{
+    width:100px;height:100px; opacity:0;
+  }
+}
+.loadingWrapper{
+	display: none;
+	position: fixed;
+	top:0;left: 0;bottom: 0;right: 0;
+	background: #ccc;
+	justify-content:center;
+	align-items:center;
+	z-index: 10;
+}
+.loadingWrapper.active{
+	display: flex;
+}
+/**********************************************/
+
+/********************导航条**************************/
+.topNavBar.sticky{
+	background: #fff;
+	padding: 6px 0px;
+	color: #3d4451;
+	box-shadow: 0 0 15px rgba(0,0,0,0.25);
+	transition: all 1.3s;
+	z-index: 5;
+}
+
+/* >是儿子选择器 */
+.topNavBar nav > ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.topNavBar{
+	padding: 10px 0px;
+	/* 脱离文档流，相对于屏幕左上角固定 */
+	position: fixed;
+	top: 0;
+	left: 0;
+	/* 解决position：fixed内容往一起缩问题 */
+	width: 100%;
+	color: #b7b7b7;
+}
+
+/* 在position：fixed外套一层解决左右padding问题 */
+.topNavBar-inner{
+	padding: 0px 16px;
+}
+
+.topNavBar nav > ul > li{
+	float: left;
+	margin-left: 17px;
+	margin-right: 17px;
+	position: relative;
+}
+
+.topNavBar a{
+	text-decoration: none;
+}
+
+/* .topNavBar nav > ul > li > a{
+	font-size: 12px;
+	color:inherit;
+	text-decoration: none;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top: 3px solid transparent;
+	border-bottom: 3px solid transparent;
+	display: block;  为解决a比父级元素li高的问题加的属性
+}
+
+.topNavBar nav > ul > li > a:hover{
+	border-bottom: 3px solid red;
+} */
+
+.topNavBar nav > ul > li > a{
+	font-size: 12px;
+	color:inherit;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.topNavBar nav > ul > li.active >  a::after,
+.topNavBar nav > ul > li.highlight >  a::after{
+    content: '';
+    display:block;
+    position:absolute;    
+    left:0;
+    width: 100%;
+    background: #e06567;
+    height:3px;
+    animation: menuSlide .5s;
+  }
+
+@keyframes menuSlide{
+	0%{
+		width: 0
+	}
+	100%{
+		width: 100%
+	}
+}
+
+@keyframes subMenuSlide{
+	0%{
+		margin-right: 100%
+	}
+	100%{
+		margin-right: 0
+	}
+}
+
+
+.submenu{
+	font-size: 12px;
+	display: none;
+	position: absolute;
+	margin-top: 3px;
+	background: #fff;
+	right: 0; /* 为了让子菜单跟上面右对齐 */
+	padding: 5px 10px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.5)
+}
+.submenu li{
+	white-space: nowrap;
+	margin: 5px 0px;
+	cursor: pointer;
+}
+li.active .submenu{
+	display: block;
+	animation: subMenuSlide .3s;
+}
+
+.topNavBar nav {
+	float: right;
+	padding-top: 7px;
+}
+
+.topNavBar .logo{
+	font-size: 24px;
+	font-family: "Arial Black";
+	padding-top: 3px;
+    padding-bottom: 4px;
+
+}
+.topNavBar .logo .rs{
+	margin-right: 4px;
+	color: red;
+}
+
+.topNavBar .logo .card{
+	color: #9a9da2;
+}
+
+/**********************************************/
+
+/***********************图片背景************************************/
+.banner{
+	height: 515px;  /* 不到迫不得已不要给固定height */
+	background-image: url(../img/banner.jpg);
+	background-position: center center; /* 背景图左右上下居中 */
+	background-size: cover; /* 图片盖住div所有面积，并按比例缩放 */
+}
+
+/***********************loading背后遮罩层************************************/
+.mask{
+	height: 515px;
+	background-color: rgba(0,0,0,0.7);
+}
+
+/********************************第一块基本信息********************************************/
+.userCard{
+	max-width: 940px; /* 屏幕小于940px时会自适应 */
+	/* 这能让一个div水平居中 */
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fff;
+	box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+}
+
+.userCard .welcome{
+	background-color: #e8676b;
+	color: #fff;
+	display: inline-block; /* span不接受设置宽高 */
+	padding: 5px 10px;
+	line-height: 21px; /* 为了防止不同机器line-height不一致给定值 */
+	position: relative;
+	margin-bottom: 10px;
+}
+
+/* 三角形 */
+.userCard .triangle{
+  display: inline-block;
+  border: 10px solid transparent;
+  width:0;
+  border-left-color: #e8676b;
+  border-top-width:0;
+  position: absolute;
+  top: 100%;
+  left: 5px;
+}
+
+.userCard .picture{
+	float: left;
+}
+
+.userCard .text{
+	float: left;
+	margin-left: 65px;
+	width: 470px; /* float元素宽度会收缩，水平分割线变短了所以给宽度 */
+}
+.userCard .text hr{
+	margin: 20px 0px;
+}
+.text h1{
+	margin: 10px 0;
+}
+.userCard .pictureAndText{
+	padding: 50px;
+}
+
+.userCard dl dt,.userCard dl dd{
+	float: left;
+	/* width: 50%;  */ /* 利用自动换行的特性，两两一行 */
+	padding:8px 0;
+}
+
+.userCard dl dt{
+	width: 30%;
+	font-weight: bold;
+}
+
+.userCard dl dd{
+	width: 70%;
+	color: #9da0a7;
+}
+
+.userCard .media{
+	background-color: #e8676b;
+	text-align: center;
+	color: #fff;
+}
+
+.userCard .media a{
+	border-radius: 50%;
+	display: inline-block;  /* 让圆圈包住里面内容 */
+	margin: 10px 16px;
+	width: 40px;
+	line-height: 30px;
+	padding: 5px 0;
+}
+.userCard .media a:hover{
+	background-color: #cf5d5f;
+}
+.userCard .media svg{
+	width: 30px;
+	height: 30px;
+	vertical-align: top;  /* 上下间隙一样宽 */
+}
+
+/* 让usercard模块上去 */
+body > main{
+	margin-top:-330px;
+}
+
+body > main .downloadcv{
+	border:1px solid #cdcfd1;
+	font-size: 14px;
+	line-height: 16px;
+	display: inline-block;  /* 内联元素的上下padding没有，左右padding有用，所以改成inline-block*/
+	padding: 21px 55px;  
+	background: #efefef;
+	border-radius: 2px;
+	color: #3d4451;
+	font-weight: bold;
+	margin: 32px 0;
+
+	transition: box-shadow 0.3s; /* 鼠标放上去阴影变化不会太突兀 */
+}
+
+body > main .downloadcv:hover{
+	box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.2);
+}
+
+.downloadcv-wrapper{
+	text-align: center;  /* 内联元素在父元素上加，让其居中 */
+}
+
+.selfInfo{
+	max-width: 940px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.skills ul{
+	background: #fff;
+	box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+	padding: 42px 50px 10px;
+}
+.skills ul li{
+	float: left;
+	width: 47%;
+	box-sizing: border-box;  /* 为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制 */
+}
+.skills ul li:nth-child(even) {
+	float: right;
+}
+.message,
+.skills,
+.portfolio{
+	max-width: 940px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+.message h2,
+.skills h2,
+.portfolio h2{
+	margin-top: 60px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.skills h3{
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.progressBar{
+	height: 5px;
+	background: #fae1e1;
+	border-radius: 3px;
+	margin: 4px 0 40px;
+	overflow: hidden;   /* 防止动画的时候滚动条在外面 */
+}
+.progressBar .progress{
+	border-radius: 3px;
+	height: 100%;  /* 如果外层div height确定，里面高给100% */
+	background: #e6686a;
+	width: 0;
+}
+
+section.skills .progressBar > .progress { height: 100%; background: #E6686A; 
+width: 70%; border-radius: 2px; transform: translateX(0); transition: all 1s; }
+section.skills.offset .progress{
+  transform: translateX(-100%);
+}
+
+
+
+
+.portfolio ol{
+	display: inline-block;
+	vertical-align: top;
+}
+.portfolio{
+	text-align: center;
+}
+.portfolio nav{
+	text-align: center;
+}
+.portfolio ol li{
+	float: left;
+	margin-left: 40px;
+	cursor: pointer;
+	font-size: 12px;
+}
+.portfolio ol li:nth-child(1){
+	margin-left: 0px;
+}
+
+.portfolio nav{
+	display: inline-block;
+}
+.portfolio nav .bar{
+	background: #fff;
+	height: 5px;
+	margin-top: 5px;
+	margin-bottom: 100px;
+	border-radius: 3px;
+}
+
+.portfolio nav .bar .bar-inner{
+	background: #e6686a;
+	height: 100%;
+	border-radius: 3px;
+	transition: all 0.3s;
+}
+
+/* .bar.state-1 表示同时满足这两个条件 */
+.portfolio nav .bar.state-1 .bar-inner{
+	margin-left: 0px;
+	width: 50px;
+}
+.portfolio nav .bar.state-2 .bar-inner{
+	margin-left: 50px;
+	width: 60px;
+}
+.portfolio nav .bar.state-3 .bar-inner{
+	margin-left: 110px;
+	width: 93px;
+}
+
+
+section.portfolio .swiper-container { width: 668px; height: 501px; }
+section.portfolio .swiper-button-prev, 
+section.portfolio .swiper-button-next{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  }
+
+.msgList,
+.msgForm{
+  	margin:25px 100px;
+  }
+ .msgForm label{
+  margin-right:80px;	
+ }
+.msgList li{
+	margin: 10px auto;
+	border-bottom: 1px solid #ccc;
+	padding: 20px 0px;
+}

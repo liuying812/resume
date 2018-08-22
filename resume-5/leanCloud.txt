@@ -1,0 +1,33 @@
+1.页面做留言功能肯定需要数据存储功能来支持，leancloud免费提供数据库这样的服务
+在https://leancloud.cn/注册一个账号。
+
+2.然后创建一个应用，看快速入门帮助文档，按步骤一步步找我们能够引用的代码，试着改，测试
+
+3.可以直接在页面中通过 script 标签引入SDK：
+<!-- 存储服务 -->
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.10.0/dist/av-min.js"></script> 
+
+4.初始化
+var APP_ID = 'XWEBdhyrvMCdzbysPIOMFBSS-gzGzoHsz';
+var APP_KEY = 'BEEXn9aJ00dvLKntppWHswME';
+
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+
+5.验证  ping "xwebdhyr.api.lncld.net" 能通
+
+6.然后在项目中编写如下测试代码：
+
+var TestObject = AV.Object.extend('TestObject');
+var testObject = new TestObject();
+testObject.save({
+  words: 'Hello World!'
+}).then(function(object) {
+  alert('LeanCloud Rocks!');
+})
+
+根据指定步骤看是否完成了数据存储
+
+7.具体一些方法，参数使用再具体搜索
